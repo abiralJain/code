@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloggy</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="../stylesheets/style.css">
+</head>
+
+<body>
+  <% if(messages.info){ %>
+    <div id="notify">
+      <h5>Like Just Added !</h5>
+      <i id="cross" class="ri-close-line"></i>
+    </div>
+  <% } %>
+  <div id="home">
+    <div id="nav">
+      <a href="/">Bloggy</a>
+      <div id="links">
+        <a href="/blogs">All Blogs by Users</a>
+        <a href="/featured">( Updated )Featured Blogs</a>
+      </div>
+      <% if(loggedIn === true){ %>
+      <div id="btns">
+        <a href="/profile">Profile</a>
+        <a id="LogOutBtn" href="/logout">Log Me Out</a>
+      </div>
+      <% } else{ %>
+      <div id="btns">
+        <a href="/register">Register</a>
+        <a href="/login">Login</a>
+      </div>
+      <% } %>
+
+    </div>
+    <div id="content">
+      <h1>Hey User, we've something really <br> good for you, <span id="tdy">today</span>.</h1>
+      <a href="">Explore More <i class="ri-arrow-right-line"></i></a>
+      <div id="menu">
+        <div id="extra">
+          <div class="catg active">
+            <i class="ri-heart-line"></i>
+            <h5>Liked Posts</h5>
+          </div>
+          <div class="catg">
+            <i class="ri-quill-pen-line"></i>
+            <a href="/recent/post"><h5 style="color: #fff;">Recent Posts</h5></a>
+          </div>
+          <div class="catg">
+            <i class="ri-user-heart-fill"></i>
+            <h5>New User</h5>
+          </div>
+        </div>
+        <div class="main">
+          <% if(results !== undefined){ %>
+            <% results.forEach(function(result){ %>
+            <div class="blgexmpl">
+              <div class="pic">
+                <img src=<%= result.author.profileImage %> alt="">
+              </div>
+              <div class="content">
+                <h4><%= result.post %></h4>
+                <h6>Lorem ipsum dolor sit amet consectetur.</h6>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores laborum atque sit culpa dolorem
+                  eveniet provident, similique voluptates minus libero...</p>
+                <div class="icons">
+                  <a href=<%= '/like/' + result._id %>><i class="ri-user-heart-line"></i></a>
+                <a href="#"><i class="ri-user-add-line"></i></a>
+                </div>
+              </div>
+            </div>
+            <% }) %>
+            <% } else{ %>
+              <h4>No posts available</h4>
+            <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var cross = document.querySelector('#cross');
+    var notify = document.querySelector('#notify');
+    cross.addEventListener('click', function(){
+      notify.style.display = "none";
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Product Sans';
+    box-sizing: border-box;
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+#center{
+    width: 85%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 43px 0;
+    background-color: #fff;
+}
+
+#center a{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: #000;
+    margin-bottom: 34px;
+}
+
+#center a i{
+    margin-right: 7px;
+}
+
+.formelem{
+    margin-top: 16px;
+}
+
+.formelem label, .formelem input{
+    display: block;
+    margin-top: 7px;
+}
+
+.formelem input{
+    width: 50%;
+    outline-color: royalblue;
+    padding: 8px 17px;
+}
+
+.formelem input[type="submit"]{
+    width: initial;
+    background-color: royalblue;
+    color: #fff;
+    border: none;
+}
